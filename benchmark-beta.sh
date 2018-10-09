@@ -1,0 +1,9 @@
+for i in {1..10};
+do
+    spark-submit --master spark://stream10:7077  --conf spark.driver.maxResultSize=6g   --conf spark.network.timeout=10000000 --executor-memory 6g --executor-cores 8 --driver-memory 6g  --class "BenchmarkBeta" target/scala-2.11/approxjoin-assembly-1.0.jar stream10 /1000000a.txt /1000000b.txt 72 &> beta/1M-1M.txt.$i;
+    spark-submit --master spark://stream10:7077  --conf spark.driver.maxResultSize=6g   --conf spark.network.timeout=10000000 --executor-memory 6g --executor-cores 8 --driver-memory 6g  --class "BenchmarkBeta" target/scala-2.11/approxjoin-assembly-1.0.jar stream10 /2000000a.txt /1000000b.txt 72 &> beta/2M-1M.txt.$i;
+    spark-submit --master spark://stream10:7077  --conf spark.driver.maxResultSize=6g   --conf spark.network.timeout=10000000 --executor-memory 6g --executor-cores 8 --driver-memory 6g  --class "BenchmarkBeta" target/scala-2.11/approxjoin-assembly-1.0.jar stream10 /4000000a.txt /1000000b.txt 72 &> beta/4M-1M.txt.$i;
+    spark-submit --master spark://stream10:7077  --conf spark.driver.maxResultSize=6g   --conf spark.network.timeout=10000000 --executor-memory 6g --executor-cores 8 --driver-memory 6g  --class "BenchmarkBeta" target/scala-2.11/approxjoin-assembly-1.0.jar stream10 /6000000a.txt /1000000b.txt 72 &> beta/6M-1M.txt.$i;
+    spark-submit --master spark://stream10:7077  --conf spark.driver.maxResultSize=6g   --conf spark.network.timeout=10000000 --executor-memory 6g --executor-cores 8 --driver-memory 6g  --class "BenchmarkBeta" target/scala-2.11/approxjoin-assembly-1.0.jar stream10 /8000000a.txt /1000000b.txt 72 &> beta/8M-1M.txt.$i;
+    spark-submit --master spark://stream10:7077  --conf spark.driver.maxResultSize=6g   --conf spark.network.timeout=10000000 --executor-memory 6g --executor-cores 8 --driver-memory 6g  --class "BenchmarkBeta" target/scala-2.11/approxjoin-assembly-1.0.jar stream10 /10000000a.txt /1000000b.txt 72 &> beta/10M-1M.txt.$i;
+done
